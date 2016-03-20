@@ -24,6 +24,10 @@
 var myChart = echarts.init(document.getElementById('main'));
 // 指定图表的配置项和数据
 myChart.setOption({
+    tooltip: {},
+    legend: {
+        data:['访问来源']
+    },
     series : [
         {
             name: '访问来源',
