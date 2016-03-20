@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>echarts</title>
+	<!-- 引入 ECharts 文件 -->
+    <!-- <script src="echarts.simple.min.js"></script> -->
+    <!-- <script src="echarts.simple.min.js"></script> -->
+    <script src="jquery-1.12.2.min.js"></script>
+    <script src="echarts.min.js"></script>
+</head>
+<body>
+	
+<style type="text/css">
+#main{
+	border: 1px #ccc solid;
+}
+
+</style>
+<!-- 为 ECharts 准备一个具备大小（宽高）的Dom -->
+<div id="main" style="width: 600px;height:400px;"></div>
+
+<script type="text/javascript">
+// 基于准备好的dom，初始化echarts实例
+var myChart = echarts.init(document.getElementById('main'));
+// 指定图表的配置项和数据
+$.get('data.json').done(function (data) {
+    myChart.setOption({
+        title: {
+            text: '异步数据加载示例'
+        },
+        tooltip: {},
+        legend: {
+            data:['销量']
+        },
+        xAxis: {
+            data: data.categories
+        },
+        yAxis: {},
+        series: [{
+            name: '销量',
+            type: 'bar',
+            data: data.data
+        }]
+    });
+});
+</script>
+
+</body>
+</html>
